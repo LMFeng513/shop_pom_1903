@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.dao.PowerMapper">
+
+    <select id="queryAllPowers" resultType="com.qf.entity.Power">
+SELECT p1.*, p2.powername AS pname FROM power p1 LEFT JOIN power p2 ON p1.pid = p2.id ORDER BY p1.id    </select>
+
+</mapper>

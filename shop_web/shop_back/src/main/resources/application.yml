@@ -1,0 +1,12 @@
+server:
+  port: 8080
+spring:
+  thymeleaf:
+    cache: false
+dubbo:
+  application:
+    name: back_web
+  registry:
+    address: zookeeper://39.108.188.42:2181
+  consumer:
+    check: false
