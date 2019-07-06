@@ -29,4 +29,9 @@ public class PowerServiceImpl implements IPowerService {
     public int insert(Power power) {
         return powerMapper.insert(power);
     }
+
+    @Override
+    public List<Power> powerListByRid(Integer rid) {
+        return powerMapper.queryPowerByRid(rid);
+    }
 }

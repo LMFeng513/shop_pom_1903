@@ -3,7 +3,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.qf.dao.PowerMapper">
 
-    <select id="queryAllPowers" resultType="com.qf.entity.Power">
-SELECT p1.*, p2.powername AS pname FROM power p1 LEFT JOIN power p2 ON p1.pid = p2.id ORDER BY p1.id    </select>
 
+    <select id="queryAllPowers" resultType="com.qf.entity.Power">
+        select p1.*,p2.powername as pname from power p1 left join power p2 on p1.pid = p2.id order by p1.id
+    </select>
+
+    <select id="queryPowerByRid" resultType="com.qf.entity.Power">
+        select p.*,
+            if((select rid from role_power_table where rid = #{rid} and pid = p.id),'true','false') as checked
+            from power p;
+    </select>
 </mapper>

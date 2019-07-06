@@ -57,4 +57,30 @@ private UserRoleMapper userRoleMapper;
         return 1;
     }
 
+//    @Override
+//    public BackUser login(String username, String password) {
+//       BackUser backUser=backUserMapper.queryByUserName(username);
+//
+//       if (backUser !=null && backUser.getPassword().equals(password)){
+//           return backUser;
+//       }
+//
+//
+//        return null;
+//    }
+
+    /*securit
+    * 提供的登录认证方法*/
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+
+        BackUser backUser =backUserMapper.queryByUserName(username);
+
+        if (backUser==null){
+            throw new UsernameNotFoundException("该用户不存在");
+        }
+        return backUser;
+    }
 }

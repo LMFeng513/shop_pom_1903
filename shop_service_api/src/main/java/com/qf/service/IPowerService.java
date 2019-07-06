@@ -16,5 +16,5 @@ List<Power>powerList();
 int insert(Power power);
 
 
-
+    List<Power> powerListByRid(Integer rid);
 }

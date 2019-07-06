@@ -46,6 +46,17 @@ public class PowerController {
 
 
 
+    /**
+     * 根据角色id查询所有权限
+     * @return
+     */
+    @RequestMapping("/queryPowersByRid")
+    @ResponseBody
+    public List<Power> queryPowersByRid(Integer rid)
+    {
+        return powerService.powerListByRid(rid);
+    }
+
 
 
 }

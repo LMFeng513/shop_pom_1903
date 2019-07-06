@@ -11,8 +11,9 @@ import com.qf.entity.Role;
 import java.util.List;
 
 public interface IRoleService {
-    List<Role>roleList();
+    List<Role> roleList();
     int insertRole(Role role);
     List<Role>roleListByUi(Integer uid);
 
+    int updateRolePowers(Integer rid, Integer[] pids);
 }

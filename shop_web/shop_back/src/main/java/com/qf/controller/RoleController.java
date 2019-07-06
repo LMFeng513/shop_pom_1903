@@ -12,13 +12,13 @@ import com.qf.service.IRoleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
 @Controller
 @RequestMapping("/role")
-
 public class RoleController {
 
     @Reference
@@ -60,6 +60,13 @@ public class RoleController {
 
     }
 
+
+    @RequestMapping("/updatePower")
+    @ResponseBody
+    public String updatePowers(Integer rid, @RequestParam("pids[]") Integer[]pids){
+        roleService.updateRolePowers(rid,pids);
+        return "succ";
+    }
 }
 
 
