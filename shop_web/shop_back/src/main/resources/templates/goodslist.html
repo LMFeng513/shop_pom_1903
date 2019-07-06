@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
 
 
+    <!--添加一个图片上传插件-->
+    <script type="text/javascript" src="resources/widget/webuploader/webuploader.min.js"></script>
+    <link rel="stylesheet" href="resources/widget/webuploader/webuploader.css">
 </head>
 <body>
 <div id="main-content">
@@ -100,7 +103,31 @@
 <!-- End #main-content -->
 
 <script>
+    $(function () {
+        // 初始化Web Uploader
+        var uploader = WebUploader.create({
 
+            // 选完文件后，是否自动上传。
+            auto: true,
+
+            // swf文件路径
+            swf: 'resources/widget/webuploader/Uploader.swf',
+
+            // 文件接收服务端。
+            server: '/goods/uploadImg',
+
+            // 选择文件的按钮。可选。
+            // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+            pick: '#filePicker',
+
+            // 只允许选择图片文件。
+            accept: {
+                title: 'Images',
+                extensions: 'gif,jpg,jpeg,bmp,png',
+                mimeTypes: 'image/*'
+            }
+        });
+    })
 
     //修改职工的角色
     // function update_user_role(){
@@ -123,7 +150,7 @@
 <div id="dialog_div" style="display: none;">
     <form action="/goods/insert" method="post">
         商品名称<input name="gname"/><br/>
-        商品图片<input name="gimage" type="file"/><br/>
+        商品图片<div id="filePicker">选择图片</div><br/>
         商品价格<input name="gprice"><br/>
         商品库存<input name="gsave"><br/>
         商品描述<textarea name="ginfo" rows="15" cols="10"></textarea>

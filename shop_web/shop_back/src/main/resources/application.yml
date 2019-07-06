@@ -10,3 +10,5 @@ dubbo:
     address: zookeeper://39.108.188.42:2181
   consumer:
     check: false
+upload:
+  path: D:\img\
