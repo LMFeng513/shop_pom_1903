@@ -11,5 +11,5 @@ import com.qf.entity.Goods;
 import java.util.List;
 
 public interface IGoodsService {
-    List<Goods>queryGoodsList();
+    List<Goods> queryGoodsList();
 }
