@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-secutity">
+<head>
+    <base th:href="${#request.getContextPath() + '/'}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Insert title here</title>
+    <!-- Invalid Stylesheet. This makes stuff look pretty. Remove it if you want the CSS completely valid -->
+    <!-- Reset Stylesheet -->
+    <link rel="stylesheet" href="resources/css/reset.css" type="text/css"
+          media="screen" />
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css"
+          media="screen" />
+    <link rel="stylesheet" href="resources/css/invalid.css" type="text/css"
+          media="screen" />
+
+    <!--                       Javascripts                       -->
+    <!-- jQuery -->
+    <script type="text/javascript"
+            src="resources/scripts/jquery-1.8.3.min.js"></script>
+    <!-- jQuery Configuration
+    <script type="text/javascript"
+            src="resources/scripts/simpla.jquery.configuration.js"></script>-->
+
+    <!-- 添加弹出框的jquery插件 -->
+    <script type="text/javascript" src="resources/widget/dialog/jquery-ui-1.9.2.custom.min.js"></script>
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+
+
+</head>
+<body>
+<div id="main-content">
+    <div class="content-box">
+        <!-- End .content-box-header -->
+        <div class="content-box-content">
+            <div class="tab-content default-tab" id="tab1">
+                <table>
+                    <thead>
+                    <tr>
+                        <th><input class="check-all" type="checkbox" /></th>
+                        <th>编号</th>
+                        <th>商品名称</th>
+                        <th>商品图片</th>
+                        <th>商品描述</th>
+                        <th>商品价格</th>
+                        <th>商品库存</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr th:each="good : ${goods}">
+                        <td><input type="checkbox" /></td>
+                        <td th:text="${good.id}">Lorem ipsum dolor</td>
+                        <td th:text="${good.gname}"><a href="#" title="title">Sit amet</a></td>
+                        <td th:text="${good.gimage}">Consectetur adipiscing</td>
+                        <td th:text="${good.ginfo}">Donec tortor diam</td>
+                        <td th:text="${good.gprice}">Donec tortor diam</td>
+                        <td th:text="${good.gsave}">Donec tortor diam</td>
+                        <td>
+                            <!-- Icons -->
+                            <a href="#" title="Edit"><img
+                                    src="resources/images/icons/pencil.png" alt="Edit" /></a>
+                            <a href="#" title="Delete"><img
+                                    src="resources/images/icons/cross.png" alt="Delete" /></a>
+
+                            <!-- 设置该职工所拥有的角色 -->
+
+                        </td>
+                    </tr>
+                    </tbody>
+
+                    <tfoot>
+                    <tr>
+                        <td colspan="6">
+                            <div class="bulk-actions align-left">
+                                <a  class="mybutton" onclick="open_dialog();">添加商品</a>
+                            </div>
+                            <!--<div class="pagination">
+                                <a href="#" title="First Page">&laquo; First</a><a href="#"
+                                                                                   title="Previous Page">&laquo; Previous</a> <a href="#"
+                                                                                                                                 class="number" title="1">1</a> <a href="#" class="number"
+                                                                                                                                                                   title="2">2</a> <a href="#" class="number current" title="3">3</a>
+                                <a href="#" class="number" title="4">4</a> <a href="#"
+                                                                              title="Next Page">Next &raquo;</a><a href="#"
+                                                                                                                   title="Last Page">Last &raquo;</a>
+                            </div>-->
+                            <!-- End .pagination -->
+                            <div class="clear"></div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <!-- End .content-box-content -->
+    </div>
+</div>
+<!-- End #main-content -->
+
+<script>
+
+
+    //修改职工的角色
+    // function update_user_role(){
+    //
+    //
+    // }
+
+    //弹出添加职工的dialog
+    function open_dialog(){
+        $("#dialog_div").dialog({
+            title: "添加职工",
+            width: 400,
+            height: 300,
+            modal: true
+        });
+    }
+</script>
+
+<!-- 代表一个弹出框 - 默认隐藏 -->
+<div id="dialog_div" style="display: none;">
+    <form action="/buser/insert" method="post">
+        用户名:<input name="username"/><br/>
+        密码:<input name="password" type="password" value="12345678"/><br/>
+        姓名:<input name="name"/><br/>
+        性别：<input type="radio" value="1" name="sex" checked/>男 <input type="radio" name="sex" value="0"/>女<br/>
+        <button type="submit">添加</button>
+    </form>
+</div>
+
+
+</body>
+</html>
