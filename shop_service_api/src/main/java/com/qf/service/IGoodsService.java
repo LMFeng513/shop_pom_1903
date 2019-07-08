@@ -11,7 +11,7 @@ import com.qf.entity.Goods;
 import java.util.List;
 
 public interface IGoodsService {
-    List<Goods> queryGoodsList();
+   List<Goods> queryGoodsList();
     Goods insertGoods(Goods goods);
-    List<Goods>toList();
+   // List<Goods>list();
 }

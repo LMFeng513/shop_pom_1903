@@ -32,13 +32,13 @@ public class GoodsController {
     @Value("${upload.path}")
     private String uploadPath;
 
-    @RequestMapping("toList")
-    public String toList(Model model){
-        List<Goods> goods = goodsService.toList();
-        model.addAttribute("goods",goods);
-        System.err.println("goods---"+goods);
-        return "/goodslist";
-    }
+//    @RequestMapping("/list")
+//    public String toList(Model model){
+//        List<Goods> goods = goodsService.list();
+//        model.addAttribute("goods",goods);
+//        System.err.println("goods---"+goods);
+//        return "goodslist";
+//    }
 
 
     @RequestMapping("/list")

@@ -2,7 +2,7 @@ package com.qf.controller;
 
   /*
     @author: LMFeng
-    @date: 2019-07-08 8:31
+    @date: 2019-07-07 8:31
     @desc:
   */
 
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("gtype")
+@RequestMapping("/type")
 public class GtypeController {
     @Reference
     private IGtypeService gtypeService;
@@ -34,7 +34,7 @@ public class GtypeController {
     @RequestMapping("addGtype")
     public String addGtype(Gtype gtype){
         int i = gtypeService.addGtype(gtype);
-        return "redirect:/gtype/toList";
+        return "redirect:/type/toList";
     }
 
     @RequestMapping("listajax")
@@ -47,7 +47,7 @@ public class GtypeController {
     @RequestMapping("deleteGtypeById/{id}")
     public String deleteGtypeById(@PathVariable Integer id){
         boolean b = gtypeService.deleteGtypeById(id);
-        return "redirect:/gtype/toList";
+        return "redirect:/type/toList";
     }
 
     @RequestMapping("listById/{id}")
@@ -62,7 +62,7 @@ public class GtypeController {
     public String update(Gtype gtype){
         System.err.println(gtype);
         boolean update = gtypeService.update(gtype);
-        return "redirect:/gtype/toList";
+        return "redirect:/type/toList";
     }
 
 
@@ -70,7 +70,7 @@ public class GtypeController {
     @ResponseBody
     public List<Gtype> goodsAjax(){
         List<Gtype> list = gtypeService.getSecondType();
-        System.err.println(list);
+        System.err.println("商品类别："+list);
         return list;
     }
 }

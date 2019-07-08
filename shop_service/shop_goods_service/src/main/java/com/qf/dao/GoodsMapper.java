@@ -13,5 +13,5 @@ import com.qf.entity.Goods;
 import java.util.List;
 
 public interface GoodsMapper extends BaseMapper<Goods> {
-    List<Goods> toList();
+    List<Goods> list();
 }

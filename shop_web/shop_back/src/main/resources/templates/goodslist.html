@@ -23,14 +23,34 @@
     <script type="text/javascript"
             src="resources/scripts/simpla.jquery.configuration.js"></script>-->
 
+    <!--引入webupload插件包-->
+    <!--引入CSS-->
+    <link rel="stylesheet" type="text/css" href="resources/widget/webuploader/webuploader.css">
+    <!--引入JS-->
+    <script type="text/javascript" src="resources/widget/webuploader/webuploader.min.js"></script>
+
+    <!--导入kingeditor包-->
+    <script charset="utf-8" src="resources/widget/kindeditor/kindeditor.js"></script>
+    <script charset="utf-8" src="resources/widget/kindeditor/lang/zh_CN.js"></script>
+    <script>
+        KindEditor.ready(function(K) {
+            window.editor = K.create('#editor_id');
+        });
+    </script>
     <!-- 添加弹出框的jquery插件 -->
     <script type="text/javascript" src="resources/widget/dialog/jquery-ui-1.9.2.custom.min.js"></script>
     <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
 
 
+    <!-- 添加树形结构插件 ztree -->
+    <script type="text/javascript" src="resources/widget/zTree/jquery.ztree.all.min.js"></script>
+    <link rel="stylesheet" href="resources/widget/zTree/zTreeStyle/zTreeStyle.css">
+
     <!-- 添加一个图片上传插件 -->
     <script type="text/javascript" src="resources/widget/webuploader/webuploader.min.js"></script>
     <link rel="stylesheet" href="resources/widget/webuploader/webuploader.css">
+    <!-- 加载编辑器的容器 -->
+
 
 </head>
 <body>
@@ -107,6 +127,7 @@
 
 <script>
 
+
     $(function (){
         // 初始化Web Uploader
         var uploader = WebUploader.create({
@@ -155,6 +176,36 @@
             images += response.filepath;
             $("#gimage").val(images);
         });
+        //Kingeditor配置
+        KindEditor.options.filterMode = false;
+        KindEditor.ready(function(K) {
+            window.editor = K.create('#editor_id',{
+                uploadJson : '/goods/up',
+                extraFileUploadParams: {"csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()},
+                filePostName: 'upload_img'
+
+
+
+            });
+        });
+
+        var options = {
+            cssPath : '/css/index.css',
+            filterMode : true
+        };
+        var editor = K.create('textarea[name="ginfo"]', options);
+// 取得HTML内容
+        html = editor.html();
+
+// 同步数据后可以直接取得textarea的value
+        editor.sync();
+        html = document.getElementById('editor_id').value; // 原生API
+        html = K('#editor_id').val(); // KindEditor Node API
+        html = $('#editor_id').val(); // jQuery
+
+// 设置HTML内容
+        //editor.html(html);
+
     });
 
     //弹出添加职工的dialog
@@ -166,12 +217,76 @@
             modal: true
         });
     }
-</script>
 
-<!-- 代表一个弹出框 - 默认隐藏 -->
+
+
+   // 商品添加时候选择的类别
+    function show_parent_type() {
+        //通过ajax查询所有的二级类别
+        $.post("/type/gtypeAjax",function(data){
+
+            var html="";
+
+            //遍历当前所有角色
+            for (var i=0;i<data.length;i++) {
+
+
+                    html += "<button  onclick='gtypebtn(" + data[i].id + ");' />" + data[i].type + "<br/>"
+
+                $("#show_gtype").html(html);
+            }
+        },"json");
+
+
+        //通过dialog弹出当前所有角色
+        $("#edit_gtype").dialog({
+            title:"选择商品类别",
+            modal:true//是否有阴影背景
+        })
+
+    }
+    function gtypebtn(gtid) {
+        $("#tid").val(gtid);
+        $("#edit_gtype").dialog("close");
+
+    }
+
+
+
+</script>
+<div id="edit_gtype" style="display: none ; margin-left: 60px">
+
+    <div id="show_gtype" ></div>
+
+
+
+
+
+</div>
+    <!--&lt;!&ndash; 父级权限选择的弹出框 &ndash;&gt;-->
+    <!--<div id="ztree_dialog" style="display: none;">-->
+        <!--&lt;!&ndash; ztree展示的容器 &ndash;&gt;-->
+        <!--<div id="ztreeDiv" class="ztree"></div>-->
+<!--        &lt;!&ndash; 父级权限选择的弹出框 &ndash;&gt;
+<div id="edit_gtype" style="display: none ; margin-left: 60px">
+    <form action="" method="post">
+
+        &lt;!&ndash; 职工的id &ndash;&gt;
+        <input type="hidden" name="uid" id="uid" value=""/>
+
+        &lt;!&ndash; 角色的复选框 &ndash;&gt;
+        <div id="show_role">
+        </div>
+        <button type="submit">确定</button>
+    </form>
+</div>-->
+
+    <!-- 代表一个弹出框 - 默认隐藏 -->
 <div id="dialog_div" style="display: none;">
     <form action="/goods/insert" method="post" enctype="multipart/form-data">
         商品名称:<input name="gname"/><br/>
+        商品类别:<button id="btn_id" type="button" onclick="show_parent_type();">无</button>
+        <input type="hidden" id="tid" name="tid" value=""><br/>
         商品图片:
         <div id="filePicker">选择图片</div>
         <div id="showPic" style="width: 600px; height: 150px; border: #ff0000 solid 1px"></div>
@@ -179,7 +294,11 @@
         <br/>
         商品价格:<input name="gprice"/><br/>
         商品库存:<input name="gsave"/><br/>
-        商品描述:<textarea name="ginfo" rows="7" cols="5"></textarea><br/>
+        商品描述:<textarea id="editor_id" name="ginfo" rows="7" cols="5" style="width:300px;height:100px;">
+      <!--  &lt;strong&gt;html&lt;/strong&gt;-->
+    </textarea><br/>
+        <script id="container" name="ginfo" type="text/plain">
+        </script>
         <button type="submit">添加</button>
     </form>
 </div>

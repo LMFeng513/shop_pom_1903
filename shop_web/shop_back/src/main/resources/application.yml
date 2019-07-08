@@ -3,6 +3,10 @@ server:
 spring:
   thymeleaf:
     cache: false
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
 dubbo:
   application:
     name: back_web
@@ -11,4 +15,4 @@ dubbo:
   consumer:
     check: false
 upload:
-  path: D:\img\
+  path: D:/img/

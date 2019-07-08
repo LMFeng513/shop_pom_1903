@@ -24,6 +24,16 @@
     <script type="text/javascript"
             src="resources/scripts/simpla.jquery.configuration.js"></script>-->
 
+    <!--引入webupload插件包-->
+    <!--引入CSS-->
+    <link rel="stylesheet" type="text/css" href="resources/widget/webuploader/webuploader.css">
+    <!--引入JS-->
+    <script type="text/javascript" src="resources/widget/webuploader/webuploader.min.js"></script>
+
+    <!--导入kingeditor包-->
+    <script charset="utf-8" src="resources/widget/kindeditor/kindeditor.js"></script>
+    <script charset="utf-8" src="resources/widget/kindeditor/lang/zh_CN.js"></script>
+
     <!-- 添加弹出框的jquery插件 -->
     <script type="text/javascript" src="resources/widget/dialog/jquery-ui-1.9.2.custom.min.js"></script>
     <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
@@ -168,7 +178,7 @@
         };
 
         //ajax查询数据库获得所有类别
-        $.get("/gtype/listajax", function(data){
+        $.get("/type/listajax", function(data){
 
             //根据查询的权限使用ztree生成树形结构
             zTreeObject = $.fn.zTree.init($("#ztreeDiv"), setting, data);
@@ -193,7 +203,7 @@
 
         $("#tid2").val(id);
         //查询所有类别
-        $.get("gtype/listById/"+id,function (data) {
+        $.get("type/listById/"+id,function (data) {
             $("#type2").val(data.type);
             $("#status2").val(data.status);
             $("#btn_id2").text(data.ptype);
@@ -218,7 +228,7 @@
 
 <!-- 代表一个弹出框 - 默认隐藏 -->
 <div id="dialog_div" style="display: none;">
-    <form action="/gtype/addGtype" method="post">
+    <form action="/type/addGtype" method="post">
         商品类别：<input name="type"/><br/>
         父类别：<button id="btn_id" type="button" onclick="show_parent_type();">无</button>
             <input name="pid" id="pid" type="hidden" value="-1"/>
@@ -240,7 +250,7 @@
 
 <!--编辑类别弹出框-->
 <div id="edit_gtype" style="display: none;">
-    <form action="/gtype/update" method="post">
+    <form action="/type/update" method="post">
         <input type="hidden" name="id" id="tid2" >
         商品类别：<input id="type2" name="type" value=""/><br/>
         父类别：<button id="btn_id2" type="button" onclick="show_parent_type();">无</button>

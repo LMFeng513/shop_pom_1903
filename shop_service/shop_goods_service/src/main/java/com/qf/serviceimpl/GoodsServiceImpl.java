@@ -24,11 +24,11 @@ public class GoodsServiceImpl implements IGoodsService {
         return goodsMapper.selectList(null);
     }
 
-    @Override
-    public List<Goods> toList(){
-        List<Goods>goods=goodsMapper.toList();
-        return goods;
-    }
+//    @Override
+//    public List<Goods> list(){
+//        List<Goods>goods=goodsMapper.list();
+//        return goods;
+//    }
 
     @Override
     public Goods insertGoods(Goods goods) {
