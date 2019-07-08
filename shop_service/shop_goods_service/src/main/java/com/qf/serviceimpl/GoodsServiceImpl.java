@@ -23,4 +23,16 @@ public class GoodsServiceImpl implements IGoodsService {
     public List<Goods> queryGoodsList() {
         return goodsMapper.selectList(null);
     }
+
+    @Override
+    public List<Goods> toList(){
+        List<Goods>goods=goodsMapper.toList();
+        return goods;
+    }
+
+    @Override
+    public Goods insertGoods(Goods goods) {
+        goodsMapper.insert(goods);
+        return goods;
+    }
 }

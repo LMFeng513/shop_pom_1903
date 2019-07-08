@@ -12,4 +12,6 @@ import java.util.List;
 
 public interface IGoodsService {
     List<Goods> queryGoodsList();
+    Goods insertGoods(Goods goods);
+    List<Goods>toList();
 }
