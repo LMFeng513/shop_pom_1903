@@ -9,5 +9,7 @@
 
         <select id="queryById" resultType="com.qf.entity.Gtype" parameterType="int">
          select *,g2.type as ptype from gtype g1 left join gtype g2 on g1.pid = g2.id where g1.id = #{id}
+
+
     </select>
     </mapper>

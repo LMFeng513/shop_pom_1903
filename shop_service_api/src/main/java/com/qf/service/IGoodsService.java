@@ -13,5 +13,7 @@ import java.util.List;
 public interface IGoodsService {
    List<Goods> queryGoodsList();
     Goods insertGoods(Goods goods);
+
+    Goods queryById(Integer gid);
    // List<Goods>list();
 }

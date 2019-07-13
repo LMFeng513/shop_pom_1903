@@ -30,13 +30,13 @@
     <script type="text/javascript" src="resources/widget/webuploader/webuploader.min.js"></script>
 
     <!--导入kingeditor包-->
-    <script charset="utf-8" src="resources/widget/kindeditor/kindeditor.js"></script>
-    <script charset="utf-8" src="resources/widget/kindeditor/lang/zh_CN.js"></script>
-    <script>
-        KindEditor.ready(function(K) {
-            window.editor = K.create('#editor_id');
-        });
-    </script>
+    <!--<script charset="utf-8" src="resources/widget/kindeditor/kindeditor.js"></script>-->
+    <!--<script charset="utf-8" src="resources/widget/kindeditor/lang/zh_CN.js"></script>-->
+    <!--<script>-->
+        <!--KindEditor.ready(function(K) {-->
+            <!--window.editor = K.create('#editor_id');-->
+        <!--});-->
+    <!--</script>-->
     <!-- 添加弹出框的jquery插件 -->
     <script type="text/javascript" src="resources/widget/dialog/jquery-ui-1.9.2.custom.min.js"></script>
     <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
@@ -81,7 +81,7 @@
                         <!--<td th:text="${good.gimage}">Consectetur adipiscing</td>-->
 
                         <td><img th:each="img : ${#strings.listSplit(good.gimage, '|')}"
-                                 th:src="|/goods/getImg?imgpath=${img}|"
+                                 th:src="|http://39.108.188.42/${img}|"
                                  style="width: 100px; height: 80px; margin-right: 5px"/></td>
 
                         <td th:text="${good.ginfo}">Donec tortor diam</td>
@@ -177,33 +177,33 @@
             $("#gimage").val(images);
         });
         //Kingeditor配置
-        KindEditor.options.filterMode = false;
-        KindEditor.ready(function(K) {
-            window.editor = K.create('#editor_id',{
-                uploadJson : '/goods/up',
-                extraFileUploadParams: {"csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()},
-                filePostName: 'upload_img'
+        // KindEditor.options.filterMode = false;
+        // KindEditor.ready(function(K) {
+        //     window.editor = K.create('#editor_id',{
+        //         uploadJson : '/goods/up',
+        //         extraFileUploadParams: {"csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()},
+        //         filePostName: 'upload_img'
+        //
+        //
+        //
+        //     });
+        // });
+        //
+        //
+        // var options = {
+        //     cssPath : '/css/index.css',
+        //     filterMode : true
+        // };
+        // var editor = K.create('textarea[name="ginfo"]', options);
 
-
-
-            });
-        });
-
-
-        var options = {
-            cssPath : '/css/index.css',
-            filterMode : true
-        };
-        var editor = K.create('textarea[name="ginfo"]', options);
-// 取得HTML内容
-        html = editor.html();
-
-// 同步数据后可以直接取得textarea的value
-        editor.sync();
-        html = document.getElementById('editor_id').value; // 原生API
-        html = K('#editor_id').val(); // KindEditor Node API
-        html = $('#editor_id').val(); // jQuery
-
+// // 取得HTML内容
+//         html = editor.html();
+//
+// // 同步数据后可以直接取得textarea的value
+//         editor.sync();
+//         html = document.getElementById('editor_id').value; // 原生API
+//         html = K('#editor_id').val(); // KindEditor Node API
+//         html = $('#editor_id').val(); // jQuery
 // 设置HTML内容
         //editor.html(html);
 
@@ -226,16 +226,14 @@
         //通过ajax查询所有的二级类别
         $.post("/type/gtypeAjax",function(data){
 
-            var html="";
+           // var html="";
 
             //遍历当前所有角色
-            for (var i=0;i<data.length;i++) {
-
-
-                    html += "<button  onclick='gtypebtn(" + data[i].id + ");' />" + data[i].type + "<br/>"
-
-                $("#show_gtype").html(html);
-            }
+            // for (var i=0;i<data.length;i++) {
+            //         html += "<button  onclick='gtypebtn(" + data[i].id + ");' />" + data[i].type + "<br/>"
+            //
+            //     $("#show_gtype").html(html);
+            // }
         },"json");
 
 
@@ -260,7 +258,7 @@
     <div id="show_gtype" ></div>
 
 
-
+    <button onclick="update_type();" type="button">提交</button>
 
 
 </div>

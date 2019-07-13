@@ -49,10 +49,16 @@
             <version>0.2.0</version>
         </dependency>
 
+
         <dependency>
             <groupId>com.qf</groupId>
             <artifactId>shop_service_api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.tobato</groupId>
+            <artifactId>fastdfs-client</artifactId>
+            <version>1.26.1-RELEASE</version>
         </dependency>
     </dependencies>
 
