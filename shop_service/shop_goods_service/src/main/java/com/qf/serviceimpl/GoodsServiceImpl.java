@@ -27,6 +27,7 @@ public class GoodsServiceImpl implements IGoodsService {
     private RabbitTemplate rabbitTemplate;
     @Reference
     private ISearchService searchService;
+
     @Override
     public List<Goods> queryGoodsList() {
         return goodsMapper.selectList(null);
