@@ -1,0 +1,6 @@
+server:
+  port: 8084
+spring:
+  rabbitmq:
+    host: 39.108.188.42
+    virtual-host: /

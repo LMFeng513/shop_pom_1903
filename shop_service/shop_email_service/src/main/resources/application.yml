@@ -1,0 +1,8 @@
+spring:
+  rabbitmq:
+    host: 39.108.188.42
+    virtual-host: /
+  mail:
+    host: smtp.sina.com
+    username: Lmf513
+    protocol: lmf123456
