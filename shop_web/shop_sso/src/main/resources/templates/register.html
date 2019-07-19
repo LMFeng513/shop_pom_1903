@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <base th:href="${#request.getContextPath()+'/'}"/>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <title>用户登录</title>
     <link rel="stylesheet" href="css/base.css" />
@@ -11,17 +12,24 @@
 
     <script>
         function sendCode() {
+
             var  emailStr =$("#email").val();
 
             if (emailStr.trim()==""){
-                alert("邮箱不能为空");
+               // alert("邮箱不能为空");
+                $("#emailid").html("邮箱不能为空");
+
                 return;
             }
             //校验邮箱格式
-            var emailRegix =/^([a-zA-Z0-9\._\-]){6,20}\@([a_zA-Z0-6]){2,5}\.(com|cn|net|org)$/;
+            var emailRegix =/^([a-zA-Z0-9\._\-]){6,20}\@([a-zA-Z0-6]){2,5}\.(com|cn|net|org)$/;
             if (!emailRegix.test(emailStr)){
-                alert("邮箱格式不正确");
+               // alert("邮箱格式不正确");
+                $("#emailid").html("邮箱格式不正确");
                 return;
+            }else {
+                $("#emailid").html("可以使用");
+
             }
 
             //用ajax发送请求通知后台发送验证码邮件
@@ -81,12 +89,12 @@
 
                 <dl>
                     <dt>邮箱</dt>
-                    <dd><input id="email" type="text" name="email" class="text"/></dd>
+                    <dd><input id="email" type="text" name="email" class="text"/><span id="emailid"></span></dd>
                 </dl>
                 <dl>
                     <dt>验证码</dt>
                     <dd><input type="text" name="code" class="text" size="10" style="width:58px;">
-                        <button type="button" onclick="sendCode">发送验证码</button>  </a></dd>
+                        <button type="button" onclick="sendCode();">发送验证码</button>  </a></dd>
                 </dl>
                 <dl>
                     <dt>&nbsp;</dt>

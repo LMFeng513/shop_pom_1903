@@ -4,5 +4,5 @@ spring:
     virtual-host: /
   mail:
     host: smtp.sina.com
-    username: Lmf513
+    username: lmf513@sina.com
     protocol: lmf123456

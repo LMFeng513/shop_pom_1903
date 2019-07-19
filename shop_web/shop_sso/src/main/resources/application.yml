@@ -4,3 +4,14 @@ spring:
   rabbitmq:
     host: 39.108.188.42
     virtual-host: /
+  redis:
+    host: 39.108.188.42
+    password: root
+dubbo:
+  application:
+    name: sso_web
+  registry:
+    address: zookeeper://39.108.188.42:2181
+  consumer:
+    check: false
+    timeout: 10000
