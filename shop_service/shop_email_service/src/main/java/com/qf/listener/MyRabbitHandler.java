@@ -35,7 +35,7 @@ public class MyRabbitHandler {
 
     @RabbitListener(queues = "email_queue")
     public void handler(Email email){
-        executorService.submit(()->{
+        executorService.submit(() -> {
             //发送邮件
             MimeMessage mimeMessage =  javaMailSender.createMimeMessage();
             MimeMessageHelper messageHelper =new MimeMessageHelper(mimeMessage);

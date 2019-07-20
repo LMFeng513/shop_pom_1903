@@ -47,6 +47,7 @@ public class SSOController {
     @RequestMapping("/sendCode")
     @ResponseBody
     public String sendCode(String email) {
+        System.out.println(email);
         String content = "注册验证码为：%d ,如果不是本人操作，请忽略";
         int code = (int)(Math.random() * 9000) + 1000;
         content =String.format(content,code);
@@ -54,6 +55,7 @@ public class SSOController {
 
         redisTemplate.opsForValue().set(email + "_code", code);
 
+        System.out.println(emailObj);
         rabbitTemplate.convertAndSend("email_exchange", "", emailObj);
 
         return "succ";

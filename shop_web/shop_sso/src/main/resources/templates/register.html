@@ -15,7 +15,7 @@
 
             var  emailStr =$("#email").val();
 
-            if (emailStr.trim()==""){
+            if (emailStr.trim()=="" && emailStr == null){
                // alert("邮箱不能为空");
                 $("#emailid").html("邮箱不能为空").css("color","red");
 
@@ -29,9 +29,8 @@
                 return;
             }else {
                 $("#emailid").html("✔").css("color","green");
-                return;
 
-            }
+          }
 
             //用ajax发送请求通知后台发送验证码邮件
             $.get("/sso/sendCode",{"email":emailStr},function (data) {
