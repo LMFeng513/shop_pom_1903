@@ -17,7 +17,7 @@
 
             if (emailStr.trim()==""){
                // alert("邮箱不能为空");
-                $("#emailid").html("邮箱不能为空");
+                $("#emailid").html("邮箱不能为空").css("color","red");
 
                 return;
             }
@@ -25,10 +25,11 @@
             var emailRegix =/^([a-zA-Z0-9\._\-]){6,20}\@([a-zA-Z0-6]){2,5}\.(com|cn|net|org)$/;
             if (!emailRegix.test(emailStr)){
                // alert("邮箱格式不正确");
-                $("#emailid").html("邮箱格式不正确");
+                $("#emailid").html("✘格式错误").css("color","red");
                 return;
             }else {
-                $("#emailid").html("可以使用");
+                $("#emailid").html("✔").css("color","green");
+                return;
 
             }
 
@@ -39,7 +40,7 @@
                     djs();
                 }
 
-            },"text")
+            }, "text")
 
 
         }

@@ -17,7 +17,7 @@ import java.net.URL;
 
 public class HttpUtil {
 
-    public static String senfGet(String urlStr){
+    public static String sendGet(String urlStr){
         try (
                 ByteArrayOutputStream out =new ByteArrayOutputStream();
 
@@ -48,6 +48,8 @@ public class HttpUtil {
         return null;
     }
 
-
+public static void main(String[] args){
+        sendGet("http://localhost:8083/item/createhtml?gid=13");
+}
 
 }

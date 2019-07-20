@@ -9,6 +9,8 @@
         <module>shop_service</module>
         <module>shop_service_api</module>
         <module>shop_web</module>
+        <module>rabbitmq_java_demo/rabbitmq_java_demo</module>
+        <module>rabbitmq_demo</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

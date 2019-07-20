@@ -25,6 +25,7 @@ public class GoodsServiceImpl implements IGoodsService {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
+
     @Reference
     private ISearchService searchService;
 
