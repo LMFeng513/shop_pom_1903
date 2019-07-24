@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.dao.GoodsMapper">
+
+<resultMap id="myResultMap" type="com.qf.entity.Goods">
+    <id column="id" property="id"/>
+    <result column="gname" property="gname"/>
+    <result column="ginfo" property="ginfo"/>
+    <result column="gimage" property="gimage"/>
+    <result column="gprice" property="gprice"/>
+    <result column="tid" property="tid"/>
+    <result column="gsave" property="gsave"/>
+
+    <association property="gtype" javaType="com.qf.entity.Gtype">
+        <id column="gid" property="id" />
+        <result column="pid" property="pid"/>
+        <result column="type" property="type"/>
+        <result column="status" property="status"/>
+    </association>
+</resultMap>
+
+
+<select id="list" resultMap="myResultMap">
+        SELECT *,gt.id as gid FROM goods g LEFT JOIN gtype gt ON g.tid = gt.id
+    </select>
+
+</mapper>

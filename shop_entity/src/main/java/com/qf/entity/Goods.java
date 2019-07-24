@@ -30,6 +30,9 @@ public class Goods implements Serializable {
     private Integer tid;
     private Integer gsave;
 
+    @TableField(exist = false)
+    private Gtype gtype = new Gtype();
+
 
 
 
