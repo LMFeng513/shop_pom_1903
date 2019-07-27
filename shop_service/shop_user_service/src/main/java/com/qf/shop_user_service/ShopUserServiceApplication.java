@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication(scanBasePackages = "com.qf")
 @MapperScan("com.qf.dao")
 @DubboComponentScan("com.qf.serviceimpl")
-@EnableTransactionManagement
 public class ShopUserServiceApplication {
 
     public static void main(String[] args) {

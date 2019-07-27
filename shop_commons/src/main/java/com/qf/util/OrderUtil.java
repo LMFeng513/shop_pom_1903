@@ -32,7 +32,7 @@ public class OrderUtil {
 
 
     * */
-    public String createOrderId(Integer id){
+    public String createOrderId(Integer uid){
         StringBuffer stringBuffer =new StringBuffer("");
 
         //拼接当前时间
