@@ -4,12 +4,12 @@ dubbo:
   application:
     name: item_web
   registry:
-    address: zookeeper://39.108.188.42:2181
+    address: zookeeper://120.79.167.170:2181
   consumer:
     check: false
     timeout: 10000
 
 spring:
   rabbitmq:
-    host: 39.108.188.42
+    host: 120.79.167.170
     virtual-host: /

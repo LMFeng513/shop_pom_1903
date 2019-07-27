@@ -1,6 +1,5 @@
 package com.qf.shop_back;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import com.github.tobato.fastdfs.domain.StorePath;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
 import org.junit.Test;
@@ -19,23 +18,25 @@ public class ShopBackApplicationTests {
 
     @Autowired
     private FastFileStorageClient fastFileStorageClient;
+
     @Test
     public void contextLoads() {
 
         System.out.println("开始上传图片");
-        File file =new File("C:\\Users\\qf\\Desktop\\IMG_0483.JPG");
+        File  file = new File("C:\\Users\\qf\\Desktop\\IMG_0483.JPG");
         try {
-            StorePath storePath=fastFileStorageClient.uploadImageAndCrtThumbImage(
+            StorePath sorePath = fastFileStorageClient.uploadImageAndCrtThumbImage(
                     new FileInputStream(file),
                     file.length(),
                     "jpg",
                     null
-
             );
-            System.out.println("上传的路径为："+storePath.getFullPath());
+
+            System.out.println("上传的路径为：" + sorePath.getFullPath());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
     }
 
 }

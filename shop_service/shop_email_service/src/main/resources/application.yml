@@ -1,6 +1,6 @@
 spring:
   rabbitmq:
-    host: 39.108.188.42
+    host: 120.79.167.170
     virtual-host: /
   mail:
     host: smtp.sina.com

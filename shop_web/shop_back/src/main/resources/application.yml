@@ -11,7 +11,7 @@ dubbo:
   application:
     name: back_web
   registry:
-    address: zookeeper://39.108.188.42:2181
+    address: zookeeper://120.79.167.170:2181
   consumer:
     check: false
 upload:
@@ -21,7 +21,7 @@ fdfs:
   so-timeout: 10000
   connect-timeout: 10000
   tracker-list:
-    - 39.108.188.42:22122
+    - 120.79.167.170:22122
   thumb-image:
     width: 100
     height: 100

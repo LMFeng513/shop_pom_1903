@@ -1,6 +1,6 @@
 dubbo:
   registry:
-    address: zookeeper://39.108.188.42:2181
+    address: zookeeper://120.79.167.170:2181
   protocol:
     name: dubbo
     port: -1
@@ -9,7 +9,7 @@ dubbo:
 spring:
   data:
     solr:
-      host: http://39.108.188.42:8983/solr/mycollection
+      host: http://120.79.167.170:8983/solr/mycollection
   rabbitmq:
-    host: 39.108.188.42
+    host: 120.79.167.170
     virtual-host: /

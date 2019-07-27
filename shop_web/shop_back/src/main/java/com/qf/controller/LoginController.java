@@ -32,16 +32,16 @@ public class LoginController {
         return "noperssion";
     }
 
-  /*  @RequestMapping("/login")
-    public String login(String username, String password, Model model){
-        BackUser user= userService.login(username,password);
-        if(user!=null){
-            model.addAttribute("loginUser",user);
-            return "index";
-        }
-
-        return "redirect:/tologin?error=1";
-    }*/
+//    @RequestMapping("/login")
+//    public String login(String username, String password, Model model){
+//        BackUser user= userService.login(username,password);
+//        if(user!=null){
+//            model.addAttribute("loginUser",user);
+//            return "index";
+//        }
+//
+//        return "redirect:/tologin?error=1";
+//    }
 
 
 }

@@ -81,7 +81,7 @@
                         <!--<td th:text="${good.gimage}">Consectetur adipiscing</td>-->
 
                         <td><img th:each="img : ${#strings.listSplit(good.gimage, '|')}"
-                                 th:src="|http://39.108.188.42/${img}|"
+                                 th:src="|http://120.79.167.170/${img}|"
                                  style="width: 100px; height: 80px; margin-right: 5px"/></td>
 
                         <td th:text="${good.ginfo}">Donec tortor diam</td>
@@ -168,7 +168,7 @@
 
         //设置文件上传成功的事件
         uploader.on('uploadSuccess', function(file, response){
-            //alert(file.name + "上传成功，上传后的路径为:" + response.filepath)
+            alert(file.name + "上传成功，上传后的路径为:" + response.filepath)
             var images = $("#gimage").val();
             if(images != ""){
                 images += "|";
@@ -310,14 +310,7 @@
     // }
 
 </script>
-<div id="edit_gtype" style="display: none ; margin-left: 60px">
 
-    <div id="show_gtype"></div>
-
-
-
-
-</div>
 <!--<div id="ztree_dialog" style="display: none;">-->
     <!--&lt;!&ndash; ztree展示的容器 &ndash;&gt;-->
     <!--<div id="ztreeDiv" class="ztree"></div>-->
@@ -363,6 +356,13 @@
 
     </form>
 </div>
+<div id="edit_gtype" style="display: none ; margin-left: 60px">
 
+    <div id="show_gtype"></div>
+
+
+
+
+</div>
 </body>
 </html>

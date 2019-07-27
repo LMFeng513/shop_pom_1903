@@ -18,5 +18,5 @@ public interface IBackUserService extends UserDetailsService {
     int insertUser(BackUser backUser);
 
     int updateUserRoles(Integer uid, Integer[] rid);
-   // BackUser login(String username,String password);
+ //  BackUser login(String username,String password);
 }

@@ -12,6 +12,9 @@
     <script type="text/javascript" src="js/jquery.js" ></script>
     <script type="text/javascript" src="js/topNav.js" ></script>
     <script type="text/javascript" src="js/shop_goods.js" ></script>
+
+    <script src="http://localhost:8084/js/login.js"></script>
+
 </head>
 <body>
 <!-- Header  -wll-2013/03/24 -->
@@ -20,9 +23,7 @@
     <div class="shop_hd_topNav">
         <div class="shop_hd_topNav_all">
             <!-- Header TopNav Left -->
-            <div class="shop_hd_topNav_all_left">
-                <p>您好，欢迎来到<b><a href="/">ShoopNC商城</a></b>[<a href="">登录</a>][<a href="">注册</a>]</p>
-            </div>
+
             <!-- Header TopNav Left End -->
 
             <!-- Header TopNav Right -->
@@ -511,17 +512,17 @@
             <div id="preview">
                 <div class=jqzoom id="spec-n1" onClick="window.open('/')">
                     <!-- 放大镜的图片 -->
-                    <IMG height="350" src="http://192.168.227.188/${images[0]}" jqimg="images/img04.jpg" width="350">
+                    <IMG height="350" src="http://120.79.167.170/${images[0]}" jqimg="images/img04.jpg" width="350">
                 </div>
                 <div id="spec-n5">
                     <div class=control id="spec-left">
                     <!-- 当前的大图 -->
-                    <img src="http://192.168.227.188/${images[0]}" />
+                    <img src="http://120.79.167.170/${images[0]}" />
                 </div>
                     <div id="spec-list">
                         <ul class="list-h">
                             <#list images as img>
-                                <li><img src="http://192.168.227.188/${img}"> </li>
+                                <li><img src="http://120.79.167.170/${img}"> </li>
                             </#list>
                         </ul>
                     </div>
@@ -601,12 +602,19 @@
                 </li>
                 <li style="padding:20px 0;">
                     <label>&nbsp;</label>
-                    <span><a href="" class="goods_sub goods_sub_gou" >加入购物车</a></span>
+                    <span><a href="" class="goods_sub goods_sub_gou" onclick="insertCart();" >加入购物车</a></span>
                 </li>
             </ul>
         </div>
     </div>
     <!-- 商品展示 End -->
+    <script type="">
+        function insertCart() {
+            var gid =${goods.id};
+            var gnumber =$("good_nums").val();
+            location.href="http://localhost:8085/cart/insert?gid="+gid+"&gnumber+"+gnumber;
+        }
+    </script>
 
     <div class="clear mt15"></div>
     <!-- Goods Left -->

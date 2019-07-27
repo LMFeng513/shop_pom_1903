@@ -7,7 +7,7 @@ dubbo:
   application:
     name: search_web
   registry:
-    address: zookeepper://39.108.188.42:2181
+    address: zookeepper://120.79.167.170:2181
   consumer:
     check: false
     timeout: 10000

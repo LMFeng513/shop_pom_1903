@@ -77,6 +77,7 @@ public class GoodsController {
     @RequestMapping("/uploadImg")
     @ResponseBody
     public String uploadImg(MultipartFile file){
+        System.out.println("开始上传图片");
 
         String uploadFile = "";
 

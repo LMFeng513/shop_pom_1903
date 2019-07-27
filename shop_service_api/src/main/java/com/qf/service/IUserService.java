@@ -15,6 +15,6 @@ public interface IUserService {
 
     int updatePassword(String username,String password);
 
-
+    User login (User user);
 
 }
